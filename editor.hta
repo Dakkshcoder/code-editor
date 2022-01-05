@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+</head>
+<body>
+    <textarea id="htmlCode"></textarea>
+    <iframe id="output"></iframe>
+    <br><button id="run" onclick="run()">▶ Run</button>
+    <button id="copy" onclick="copytext()">Copy</button> 
+</body>
+</html>
+<style>
+    body {
+        background-color: rgb(43, 44, 44);
+    }
+    textarea {
+        width:50%;
+        height:500px;
+        border: 2px solid white;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+    }
+    iframe {
+        width: 47%;
+        height: 500px;
+        color: black;
+        background-color: white;
+    }
+    button {
+        height: 50px;
+        width: 100px;
+        background-color: rgb(23, 175, 10);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: larger;
+    }
+    button:hover {
+        background-color: rgb(59, 199, 46);
+    }
+</style>
+<script>
+ function copytext() {
+     var copytext = document.getElementById("htmlCode"); 
+     copytext.select();
+     navigator.clipboard.writeText(copytext.value);
+     alert("Copied text: " + copytext.value)
+ }    
+    function run() {
+        let htmlCode = document.querySelector("textarea").value;
+        let output = document.querySelector("iframe")
+        output.contentDocument.body.innerHTML = htmlCode;
+    }
+</script>
